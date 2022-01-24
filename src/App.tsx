@@ -1,7 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Nav from './components/layout/Nav';
+import RankDisplay from './components/layout/rank';
 
 import client from './utilities/api/client';
 
@@ -14,7 +14,9 @@ function App() {
   return (
     <div className="App">
       <Nav />
-      <h1></h1>
+      <h1>
+        <RankDisplay ranks={rank} />
+      </h1>
     </div>
   );
 }

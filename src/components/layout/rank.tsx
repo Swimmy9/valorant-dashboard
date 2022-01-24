@@ -1,16 +1,17 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { rank } from "../../types";
 
 export default class RankDisplay extends React.Component {
-    static propTypes = {
+    static props = {
         rank: PropTypes.string,
     };
 
-    render() {
-        return (
-            <div className="component-display">
-                <div>{this.props.children}</div>
-            </div>
-        );
-    }
+    render(props<rank>) {
+    return (
+        <div className="component-display">
+            <div>{rank.ranks}</div>
+        </div>
+    );
+}
 }

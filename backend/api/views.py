@@ -10,7 +10,7 @@ blueprint: Blueprint = Blueprint(
 
 @blueprint.get("/home")
 def home():
-    return jsonify("word: hello world")
+    return jsonify(getRank())
 
 
 @blueprint.get("/rank")
