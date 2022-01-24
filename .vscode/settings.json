@@ -3,5 +3,6 @@
     "python.analysis.extraPaths": [
         "site-packages",
         "/Users/shubh/Documents/Projects/valorant_dashboard/valorant-dashboard/env/lib/python3.9/"
-    ]
+    ],
+    "python.formatting.provider": "black"
 }

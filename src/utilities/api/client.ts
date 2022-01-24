@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
-import { yuh } from "../../types";
+import { rank } from "../../types";
 
 class ApiClient {
 
@@ -12,12 +12,12 @@ class ApiClient {
         this.instance = axios.create({ ...baseConfig, ...config })
     }
 
-    public async home(): Promise<yuh> {
+    public async home(): Promise<rank> {
         const { data } = await this.instance.get("/home")
         return data
     }
 
-    public async rank(): Promise<yuh> {
+    public async rank(): Promise<rank> {
         const { data } = await this.instance.get("/rank")
         return data
     }
