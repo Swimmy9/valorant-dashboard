@@ -15,7 +15,8 @@ function App() {
     <div className="App">
       <Nav />
       <h1>
-        <RankDisplay ranks={rank} />
+        <RankDisplay />
+        { rank }
       </h1>
     </div>
   );

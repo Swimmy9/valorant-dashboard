@@ -7,10 +7,10 @@ export default class RankDisplay extends React.Component {
         rank: PropTypes.string,
     };
 
-    render(props<rank>) {
+    render() {
     return (
         <div className="component-display">
-            <div>{rank.ranks}</div>
+            <div><h1></h1></div>
         </div>
     );
 }

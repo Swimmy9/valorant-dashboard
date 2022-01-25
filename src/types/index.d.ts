@@ -1,3 +1,3 @@
-export type rank RankProps = {
+export type rank = {
     rank: string
 }
