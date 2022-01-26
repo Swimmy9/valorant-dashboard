@@ -20,13 +20,11 @@ export default class App extends React.Component {
   }
   
   updateState() {
-    console.log("yo");
     let obj = (client.rank())
     obj.then(value => {
       this.setState({ tier: value.data});
     }
     )
-    
   }
 
   render () {
