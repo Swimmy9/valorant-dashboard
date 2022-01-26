@@ -2,34 +2,31 @@ import React from 'react';
 import './App.css';
 import Nav from './components/layout/Nav';
 import RankDisplay from './components/layout/rank';
-import { Button } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 
 import client from './utilities/api/client';
 
-// let resultAns = client.home();
-// let rank = client.rank();
-// console.log(resultAns);
-
 export default class App extends React.Component {
 
-  constructor(props)  {
+  constructor(props) {
     super(props);
     this.state = {
       tier: null,
+      search: null,
     };
   }
-  
+
   updateState() {
     console.log("yo");
     let obj = (client.rank())
     obj.then(value => {
-      this.setState({ tier: value.data});
+      this.setState({ tier: value.data });
     }
     )
-    
+
   }
 
-  render () {
+  render() {
     return (
       <>
         <div className="App">
@@ -38,6 +35,17 @@ export default class App extends React.Component {
         <div style={{ paddingTop: "100px" }}>
           <Button onClick={() => this.updateState()}>Click Here!</Button>
         </div>
+
+        <div>
+          <Form>
+            <Form.Group className="mb-3">
+              <Form.Label>Username (with tag): </Form.Label>
+              <Form.Control placeholder="Username#tag"></Form.Control>
+            </Form.Group>
+            <Button variant="outline-dark" onClick={() => this.updateState()}>Submit</Button>
+          </Form>
+        </div>
+
         <div>
           <RankDisplay tier={this.state.tier} />
         </div>
