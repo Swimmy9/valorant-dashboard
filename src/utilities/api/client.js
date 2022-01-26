@@ -1,25 +1,24 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
-import { rank } from "../../types";
+import axios from "axios";
 
 class ApiClient {
 
-    private instance: AxiosInstance
+    instance
 
-    constructor(config: AxiosRequestConfig = {}) {
-        let baseConfig: AxiosRequestConfig = {
+    constructor(config) {
+        let baseConfig = {
             baseURL: `${document.location.protocol}//${document.location.host}/api`
         }
         this.instance = axios.create({ ...baseConfig, ...config })
     }
 
-    public async home(): Promise<rank> {
+    async home() {
         const { data } = await this.instance.get("/home")
         return data
     }
 
-    public async rank(): Promise<rank> {
+    async rank() {
         const { data } = await this.instance.get("/rank")
-        return data
+        return { data }
     }
 
 

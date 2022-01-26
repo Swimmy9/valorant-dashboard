@@ -1,3 +1,3 @@
-export type rank = {
-    rank: string
+export type Rank = {
+    tier: string
 }
