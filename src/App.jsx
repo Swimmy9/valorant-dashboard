@@ -7,47 +7,64 @@ import { Button, Form } from 'react-bootstrap';
 import client from './utilities/api/client';
 
 export default class App extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
       tier: null,
-      search: null,
+      user: "",
+      tag: "",
     };
   }
 
   updateState() {
-    let obj = (client.rank())
-    obj.then(value => {
+    let obj = client.rank(this.state.user, this.state.tag);
+    obj.then((value) => {
       this.setState({ tier: value.data });
-    }
-    )
+    });
   }
 
   render() {
     return (
-      <>
-        <div className="App">
+      <div className="App">
+        <div>
           <Nav />
         </div>
-        <div style={{ paddingTop: "100px" }}>
-          <Button onClick={() => this.updateState()}>Click Here!</Button>
-        </div>
 
-        <div>
+        {/*<div style={{ paddingTop: "100px" }}>
+          <Button onClick={() => this.updateState()}>Click Here!</Button>
+          </div>
+          */}
+
+        <div style={{ paddingTop: "60px" }}>
           <Form>
-            <Form.Group className="mb-3">
-              <Form.Label>Username (with tag): </Form.Label>
-              <Form.Control placeholder="Username#tag"></Form.Control>
+            <Form.Group className="mb-3" style={{ width: "300px" }}>
+              <Form.Label>Username:</Form.Label>
+              <Form.Control
+                value={this.state.user}
+                placeholder="Username"
+                onChange={(e) => this.setState({ user: e.target.value })}
+              ></Form.Control>
             </Form.Group>
-            <Button variant="outline-dark" onClick={() => this.updateState()}>Submit</Button>
+
+            <Form.Group className="mb-3" style={{ width: "300px" }}>
+              <Form.Label>Tag:</Form.Label>
+              <Form.Control
+                value={this.state.tag}
+                placeholder="tag"
+                onChange={(e) => this.setState({ tag: e.target.value })}
+              ></Form.Control>
+            </Form.Group>
+
+            <Button variant="outline-light" onClick={() => this.updateState()}>
+              Submit
+            </Button>
           </Form>
         </div>
 
         <div>
           <RankDisplay tier={this.state.tier} />
         </div>
-      </>
+      </div>
     );
   }
 }

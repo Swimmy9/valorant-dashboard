@@ -16,8 +16,8 @@ class ApiClient {
         return data
     }
 
-    async rank() {
-        const { data } = await this.instance.get("/rank")
+    async rank(user, tag) {
+        const { data } = await this.instance.get(`/rank/${user}/${tag}`)
         return { data }
     }
 

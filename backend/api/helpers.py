@@ -4,8 +4,8 @@ import json
 baseURL = "https://api.henrikdev.xyz"
 
 
-def getRank():
-    response = requests.get(f"{baseURL}/valorant/v1/mmr/na/Beifong%20Toph/earth")
+def getRank(user, tag):
+    response = requests.get(f"{baseURL}/valorant/v1/mmr/na/{user}/{tag}")
     jsonResponse = response.json()
     rank = jsonResponse["data"]["currenttierpatched"]
     return f"{rank}"

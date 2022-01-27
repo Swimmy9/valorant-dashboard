@@ -13,6 +13,6 @@ def home():
     return jsonify(getRank())
 
 
-@blueprint.get("/rank")
-def rank():
-    return jsonify(getRank())
+@blueprint.get('/rank/<string:user>/<string:tag>')
+def rank(user, tag):
+    return jsonify(getRank(user, tag))
